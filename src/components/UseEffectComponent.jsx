@@ -12,6 +12,7 @@ const UseEffectComponent = () => {
 
     const [counter1, setCounter1] = useState(0)
     const [counter2, setCounter2] = useState(10)
+    // useState is for declaring state variables
 
     useEffect(() => {
         // the first argument is the code you want to execute
@@ -44,6 +45,19 @@ const UseEffectComponent = () => {
         // I'm just listening to counter2 for re-invoking the function!
         // this will NOT appear if I just increase counter1 (clicking the first button)
     ])
+
+    useEffect(() => {
+        alert('counter 1 changed!')
+    }, [counter1])
+
+    useEffect(() => {
+        return () => {
+            console.log('bye bye')
+            // this is mimicking componentWillUnmount!
+            // you want to put your logic in a return statement in the callback
+        }
+    }, [])
+    // this is the replacement of componentWillUnmount
 
     return (
         <>
